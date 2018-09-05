@@ -17,7 +17,25 @@ class Library {
         
         print("\n")
         
-        print("Please enter the title of the game you want to add:")
+        print("If you want to add a game to the Video Game Library, you must enter an administrator password.")
+        
+        var input: String? = nil
+        
+        repeat {
+            let line = readLine()!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            if line != "" {
+                input = line
+            } else {
+                print("Invalid input! Please try again:")
+            }
+        } while input == nil
+        
+        print("\n")
+        
+        if input == "Gamecube>All" {
+        
+        print("Welcome Admin! Please enter the title of the game you want to add:")
         var input: String? = nil
         
         repeat {
@@ -43,6 +61,10 @@ class Library {
             
         }
         print("\n")
+            
+        } else {
+            print("Sorry we don't recognize that password!")
+        }
     }
     
     func removeGame() {
@@ -63,11 +85,15 @@ class Library {
             }
         } while input == nil
         
+        print("\n")
+        
         if input == "Gamecube>All" {
             
             
             
-            print("Here is the list of the games we have to remove:")
+            print("Welcome Admin! Here is the list of the games we have to remove:")
+            
+            print("\n")
             
             for (i, index) in gameArray.enumerated() {
                 
