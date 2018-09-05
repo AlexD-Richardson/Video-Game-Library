@@ -9,7 +9,7 @@
 import Foundation
 
 class Library {
-
+    
     
     private var gameArray: [Game] =
         
@@ -39,33 +39,33 @@ class Library {
         print("\n")
         
         if input == "Gamecube>All" {
-        
-        print("Welcome Admin! Please enter the title of the game you want to add:")
-        var input: String? = nil
-        
-        repeat {
-            let line = readLine()!.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            if line != "" {
-                input = line
-            } else {
-                print("Invalid input! Please try again:")
+            print("Welcome Admin! Please enter the title of the game you want to add:")
+            var input: String? = nil
+            
+            repeat {
+                let line = readLine()!.trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                if line != "" {
+                    input = line
+                } else {
+                    print("Invalid input! Please try again:")
+                }
+            } while input == nil
+            
+            gameArray.append(Game(title: input!))
+            
+            print("\n")
+            
+            print("Thanks for adding a game! Here is our library of games so far:")
+            
+            print("\n")
+            
+            for game in gameArray {
+                print(game.title)
+                
             }
-        } while input == nil
-        
-        gameArray.append(Game(title: input!))
-        
-        print("\n")
-        
-        print("Thanks for adding a game! Here is our library of games so far:")
-        
-        print("\n")
-        
-        for game in gameArray {
-            print(game.title)
-            
-        }
-        print("\n")
+            print("\n")
             
         } else {
             print("Sorry we don't recognize that password!")
@@ -164,6 +164,17 @@ class Library {
         
         print("\n")
         
+        var funcCont = false
+        for game in gameArray {
+            if game.checkedIn {
+                funcCont = true
+            }
+        }
+        
+        if !funcCont {
+            return print("There are no games available to checkout")
+        }
+        
         print("What game would you like to check out?")
         
         print("\n")
@@ -211,8 +222,22 @@ class Library {
     }
     
     func checkInGames() {
+        
         print("\n")
+        
+        var funcCont = false
+        for game in gameArray {
+            if !game.checkedIn {
+                funcCont = true
+            }
+        }
+        
+        if !funcCont {
+            return print("There are no games available to check in")
+        }
+        
         print("What game would you like to check in?")
+        
         print("\n")
         
         for (i, index) in gameArray.enumerated() {
@@ -272,7 +297,7 @@ class Library {
             
             if let dueDate = game.dueDate {
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MM/dd/yyy"
+                dateFormatter.dateFormat = "EEEE MMMM d, yyyy"
                 
                 if game.checkedIn == false {
                     print("\(game.title)  Due Date: \(dateFormatter.string(from: dueDate))")
