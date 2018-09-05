@@ -136,6 +136,7 @@ class Library {
         }
             
         else {
+            
             print("Sorry we don't recognize that password")
             
         }
@@ -160,8 +161,11 @@ class Library {
     }
     
     func checkOutGames() {
+        
         print("\n")
+        
         print("What game would you like to check out?")
+        
         print("\n")
         
         for (i, index) in gameArray.enumerated() {
@@ -183,16 +187,20 @@ class Library {
             if input > 0 && input < gameArray.count + 1 {
                 
                 gameArray[input - 1].checkedIn = false
+                
                 let currentCalendar = Calendar.current
+                
                 let dueDate = currentCalendar.date(byAdding: .day, value: 14, to: Date())
+                
                 gameArray[input - 1].dueDate = dueDate
+                
                 if let dueDate = dueDate {
+                    
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "EEEE MMMM d, yyyy"
                     print("\n")
                     print("Your game is due back on \(dateFormatter.string(from: dueDate))")
                 }
-                
                 
             } else {
                 print("Invalid Input! Please enter in a number between 1 and \(gameArray.count)")
