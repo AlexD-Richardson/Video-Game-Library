@@ -13,8 +13,8 @@ Welcome to the Video Game Library!
 
 """)
 
-
 let menu = Menu()
+
 
 menu.go()
 

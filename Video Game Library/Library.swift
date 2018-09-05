@@ -9,8 +9,7 @@
 import Foundation
 
 class Library {
-    
-    let menu2 = Menu()
+
     
     private var gameArray: [Game] = [Game(title: "Super Smash Bros Melee"), Game(title: "Mario Kart 64"), Game(title: "Sonic Adventure Battle 2")]
     
@@ -107,7 +106,7 @@ class Library {
             
         else {
             print("Sorry we don't recognize that password")
-            menu2.help()
+            
         }
     }
     
