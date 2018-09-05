@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9E4B3E922138491D002FB756 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4B3E912138491D002FB756 /* main.swift */; };
+		9E4B3E9921384A5D002FB756 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4B3E9821384A5D002FB756 /* Menu.swift */; };
+		9EB19EB5213EC2D400A53C20 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB19EB4213EC2D400A53C20 /* Library.swift */; };
+		9EE4FDBF213EBBE6005C611B /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE4FDBE213EBBE6005C611B /* Games.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,9 @@
 /* Begin PBXFileReference section */
 		9E4B3E8E2138491D002FB756 /* Video Game Library */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Video Game Library"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E4B3E912138491D002FB756 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		9E4B3E9821384A5D002FB756 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		9EB19EB4213EC2D400A53C20 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		9EE4FDBE213EBBE6005C611B /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				9E4B3E912138491D002FB756 /* main.swift */,
+				9E4B3E9821384A5D002FB756 /* Menu.swift */,
+				9EE4FDBE213EBBE6005C611B /* Games.swift */,
+				9EB19EB4213EC2D400A53C20 /* Library.swift */,
 			);
 			path = "Video Game Library";
 			sourceTree = "<group>";
@@ -119,6 +128,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EE4FDBF213EBBE6005C611B /* Games.swift in Sources */,
+				9EB19EB5213EC2D400A53C20 /* Library.swift in Sources */,
+				9E4B3E9921384A5D002FB756 /* Menu.swift in Sources */,
 				9E4B3E922138491D002FB756 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
