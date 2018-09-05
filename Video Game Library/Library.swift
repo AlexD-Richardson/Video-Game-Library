@@ -11,7 +11,12 @@ import Foundation
 class Library {
 
     
-    private var gameArray: [Game] = [Game(title: "Super Smash Bros Melee"), Game(title: "Mario Kart 64"), Game(title: "Sonic Adventure Battle 2")]
+    private var gameArray: [Game] =
+        
+        [Game(title: "Super Smash Bros Melee"),
+         Game(title: "Mario Kart 64"),
+         Game(title: "Sonic Adventure Battle 2"),
+         Game(title: "Super Mario 64")]
     
     func addGame() {
         
@@ -183,7 +188,7 @@ class Library {
                 gameArray[input - 1].dueDate = dueDate
                 if let dueDate = dueDate {
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MM/dd/yyy"
+                    dateFormatter.dateFormat = "EEEE MMMM d, yyyy"
                     print("\n")
                     print("Your game is due back on \(dateFormatter.string(from: dueDate))")
                 }
