@@ -114,7 +114,15 @@ class Library {
                 
                 if input > 0 && input < gameArray.count + 1 {
                     
-                    gameArray.remove(at: input - 1)
+                    if gameArray[input].checkedIn == true {
+                        
+                        gameArray.remove(at: input - 1)
+                        
+                    } else {
+                        print("That game is checked out at the moment! You must check the game in first")
+                        checkInGames()
+                        
+                    }
                     
                 }
                 
