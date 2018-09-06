@@ -114,11 +114,11 @@ class Library {
                 
                 if input > 0 && input < gameArray.count + 1 {
                     
-                    if gameArray[input].checkedIn == true {
+                    if gameArray[input - 1].checkedIn == true {
                         
                         gameArray.remove(at: input - 1)
                         
-                    } else {
+                    } else if gameArray[input - 1].checkedIn == false {
                         print("That game is checked out at the moment! You must check the game in first")
                         checkInGames()
                         
@@ -153,6 +153,17 @@ class Library {
     func listAvailableGames() {
         
         print("\n")
+        
+        var funcCont = false
+        for game in gameArray {
+            if game.checkedIn {
+                funcCont = true
+            }
+        }
+        
+        if !funcCont {
+            return print("There are no games available games. Sorry!")
+        }
         
         print("Here are the games we have available:")
         
