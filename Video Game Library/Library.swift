@@ -261,10 +261,8 @@ class Library {
                     
                     return print("\(gameArray[input - 1].title) is already checked out. Sorry!")
                     
-                } else {
-                    
-                    if gameArray[input - 1].rating == "M" {
-                        
+                } else  if gameArray[input - 1].rating == "M" {
+                
                         print("Please enter your age to verify if you are old enough to check this game out:")
                         
                         let permission = checkAge()
@@ -285,8 +283,7 @@ class Library {
                             return print("Sorry you are too young to check this game out.")
                             
                         }
-                        
-                    } else {
+                    }
                         
                         gameArray[input - 1].checkedIn = false
                         
@@ -303,10 +300,10 @@ class Library {
                             print("\n")
                             print("\(gameArray[input - 1].title) is due back on \(dateFormatter.string(from: dueDate))")
                         }
-                    }
+                    
                    
                 
-                }
+                
                 } else {
                     print("Invalid Input! Please enter in a number between 1 and \(gameArray.count)")
                     checkOutGames()
@@ -314,12 +311,15 @@ class Library {
             
                 
             
-        } else {
-            print("Invalid Input! Please enter in a number between 1 and \(gameArray.count)")
-            checkOutGames()
-        }
-    }
+        
+            
+            }else {
+                print("Invalid Input! Please enter in a number between 1 and \(gameArray.count)")
+                checkOutGames()
+                
+            }
 
+    }
         
         
         func checkInGames() {
