@@ -261,224 +261,224 @@ class Library {
                     
                     return print("\(gameArray[input - 1].title) is already checked out. Sorry!")
                     
-                } else  if gameArray[input - 1].rating == "M" {
-                
-                        print("Please enter your age to verify if you are old enough to check this game out:")
-                        
-                        let permission = checkAge()
-                        
-                        if permission == false {
-                            
-                            return print("Sorry you are too young to check this game out.")
-                        }
-                        
-                    } else if gameArray[input - 1].rating == "T" {
-                        
-                        print("Please enter your age to verify if you are old enough to check this game out:")
-                        
-                        let permission = checkAge()
-                        
-                        if permission == false {
-                            
-                            return print("Sorry you are too young to check this game out.")
-                            
-                        }
-                    }
-                        
-                        gameArray[input - 1].checkedIn = false
-                        
-                        let currentCalendar = Calendar.current
-                        
-                        let dueDate = currentCalendar.date(byAdding: .day, value: 14, to: Date())
-                        
-                        gameArray[input - 1].dueDate = dueDate
-                        
-                        if let dueDate = dueDate {
-                            
-                            let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "EEEE MMMM d, yyyy"
-                            print("\n")
-                            print("\(gameArray[input - 1].title) is due back on \(dateFormatter.string(from: dueDate))")
-                        }
-                    
-                   
-                
-                
-                } else {
-                    print("Invalid Input! Please enter in a number between 1 and \(gameArray.count)")
-                    checkOutGames()
                 }
-            
                 
-            
-        
-            
-            }else {
+                if gameArray[input - 1].rating == "M" {
+                    
+                    print("Please enter your age to verify if you are old enough to check this game out:")
+                    
+                    let permission = checkAge()
+                    
+                    if permission == (false, false) || permission == (false, true) {
+                        
+                        return print("Sorry you are too young to check this game out.")
+                    }
+                    
+                } else if gameArray[input - 1].rating == "T" {
+                    
+                    print("Please enter your age to verify if you are old enough to check this game out:")
+                    
+                    let permission = checkAge()
+                    
+                    if permission == (false, false) {
+                        
+                        return print("Sorry you are too young to check this game out.")
+                        
+                    }
+                }
+                
+                gameArray[input - 1].checkedIn = false
+                
+                let currentCalendar = Calendar.current
+                
+                let dueDate = currentCalendar.date(byAdding: .day, value: 14, to: Date())
+                
+                gameArray[input - 1].dueDate = dueDate
+                
+                if let dueDate = dueDate {
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "EEEE MMMM d, yyyy"
+                    print("\n")
+                    print("\(gameArray[input - 1].title) is due back on \(dateFormatter.string(from: dueDate))")
+                }
+                
+                
+                
+            } else {
                 print("Invalid Input! Please enter in a number between 1 and \(gameArray.count)")
                 checkOutGames()
-                
             }
-
+            
+            
+        } else {
+            print("Invalid Input! Please enter in a number between 1 and \(gameArray.count)")
+            checkOutGames()
+            
+        }
+        
     }
+    
+    
+    func checkInGames() {
         
+        print("\n")
         
-        func checkInGames() {
+        var funcCont = false
+        for game in gameArray {
             
-            print("\n")
-            
-            var funcCont = false
-            for game in gameArray {
+            if !game.checkedIn {
                 
-                if !game.checkedIn {
-                    
-                    funcCont = true
-                }
+                funcCont = true
             }
+        }
+        
+        if !funcCont {
+            return print("There are no games available to check in")
+        }
+        
+        print("What game would you like to check in?")
+        
+        print("\n")
+        
+        for (i, index) in gameArray.enumerated() {
             
-            if !funcCont {
-                return print("There are no games available to check in")
-            }
-            
-            print("What game would you like to check in?")
-            
-            print("\n")
-            
-            for (i, index) in gameArray.enumerated() {
+            if index.checkedIn == false {
                 
-                if index.checkedIn == false {
-                    
-                    print("\(i + 1) \(index.title) Rating: \(index.rating)")
-                    
-                }
+                print("\(i + 1) \(index.title) Rating: \(index.rating)")
                 
             }
             
-            print("\n")
+        }
+        
+        print("\n")
+        
+        print("Please enter in a number corresponding to the game you want to check in:")
+        
+        print("\n")
+        
+        if let input = Int(readLine()!) {
             
-            print("Please enter in a number corresponding to the game you want to check in:")
-            
-            print("\n")
-            
-            if let input = Int(readLine()!) {
+            if input > 0 && input < gameArray.count + 1 {
                 
-                if input > 0 && input < gameArray.count + 1 {
+                if gameArray[input - 1].checkedIn {
                     
-                    if gameArray[input - 1].checkedIn {
-                        
-                        return print("\(gameArray[input - 1].title) is already checked in")
-                        
-                    } else {
-                        
-                        gameArray[input - 1].checkedIn = true
-                        gameArray[input - 1].dueDate = nil
-                        
-                        print("\n")
-                        
-                        print("Here are the games that are available to check out now:")
-                        
-                        print("\n")
-                        
-                        for game in gameArray {
-                            if game.checkedIn == true {
-                                
-                                print("\(game.title) Rating: \(game.rating)")
-                            }
-                        }
-                    }
-                    
+                    return print("\(gameArray[input - 1].title) is already checked in")
                     
                 } else {
-                    print("Invalid Input! Please enter in a number between 1 and \(gameArray.count)")
-                    checkInGames()
+                    
+                    gameArray[input - 1].checkedIn = true
+                    gameArray[input - 1].dueDate = nil
+                    
+                    print("\n")
+                    
+                    print("Here are the games that are available to check out now:")
+                    
+                    print("\n")
+                    
+                    for game in gameArray {
+                        if game.checkedIn == true {
+                            
+                            print("\(game.title) Rating: \(game.rating)")
+                        }
+                    }
                 }
+                
                 
             } else {
                 print("Invalid Input! Please enter in a number between 1 and \(gameArray.count)")
                 checkInGames()
             }
             
+        } else {
+            print("Invalid Input! Please enter in a number between 1 and \(gameArray.count)")
+            checkInGames()
         }
         
-        func checkedOutGames() {
+    }
+    
+    func checkedOutGames() {
+        
+        print("\n")
+        
+        var funcCont = false
+        for game in gameArray {
             
-            print("\n")
-            
-            var funcCont = false
-            for game in gameArray {
+            if !game.checkedIn {
                 
-                if !game.checkedIn {
-                    
-                    funcCont = true
-                }
+                funcCont = true
             }
-            
-            if !funcCont {
-                return print("There are no games checked out at the moment")
-            }
-            
-            print("Here are the games that are checked out:")
-            
-            print("\n")
-            
-            for game in gameArray {
-                
-                if let dueDate = game.dueDate {
-                    
-                    let dateFormatter = DateFormatter()
-                    
-                    dateFormatter.dateFormat = "EEEE MMMM d, yyyy"
-                    
-                    if game.checkedIn == false {
-                        
-                        print("\(game.title) Rating: \(game.rating) Due Date: \(dateFormatter.string(from: dueDate))")
-                    }
-                }
-            }
-            print("\n")
         }
         
-        func checkAge() -> Bool {
+        if !funcCont {
+            return print("There are no games checked out at the moment")
+        }
+        
+        print("Here are the games that are checked out:")
+        
+        print("\n")
+        
+        for game in gameArray {
             
-            var permission = false
-            
-            var age: Int? = nil
-            
-            
-            repeat {
-                if let input = Int(readLine()!) {
+            if let dueDate = game.dueDate {
+                
+                let dateFormatter = DateFormatter()
+                
+                dateFormatter.dateFormat = "EEEE MMMM d, yyyy"
+                
+                if game.checkedIn == false {
                     
-                    age = input
+                    print("\(game.title) Rating: \(game.rating) Due Date: \(dateFormatter.string(from: dueDate))")
+                }
+            }
+        }
+        print("\n")
+    }
+    
+    func checkAge() -> (Bool, Bool) {
+        
+        var permissionM = false
+        var permissionT = false
+        
+        var age: Int? = nil
+        
+        
+        repeat {
+            if let input = Int(readLine()!) {
+                
+                age = input
+                
+                if age! >= 18 {
                     
-                    if age! >= 18 {
-                        
-                        permission = true
-                        
-                        return permission
-                        
-                    } else if age! >= 13 {
-                        
-                        permission = true
-                        
-                        
-                        
-                        return permission
-                        
-                    } else {
-                        
-                        permission = false
-                        
-                    }
+                    permissionM = true
+                    permissionT = true
+                    
+                    return (permissionM, permissionT)
+                    
+                } else if age! >= 13 && age! < 18 {
+                    
+                    permissionM = false
+                    permissionT = true
+                    
+                    return (permissionM, permissionT)
+                    
                 } else {
                     
-                    print("Invalid input! Please enter your valid age.")
+                    permissionM = false
+                    permissionT = false
+                    
                 }
-            } while age == nil
-            
-            return permission
-            
-}
-
-
+            } else {
+                
+                print("Invalid input! Please enter your valid age.")
+            }
+        } while age == nil
+        
+        return (permissionM, permissionT)
+        
+    }
+    
+    
 }
 
 
